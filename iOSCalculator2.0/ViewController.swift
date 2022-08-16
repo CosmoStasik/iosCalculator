@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        clearAll("0")
+       // clearAll("0")
     }
     
     @IBAction func clearAll(_ sender: Any) {
@@ -77,8 +77,14 @@ class ViewController: UIViewController {
                 title: "Invalid Input",
                 message: "Calculator unable to do math based on input",
                 preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Okay", style: .default))
+            alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { _ in
+                self.workings.removeLast()
+                self.labelResult.text = self.workings}))
             self.present(alert, animated: true, completion: nil)
+        
+            
+           // self.present(alert, animated: true, completion: nil)
+            
         }
         //addToWorkings(value: "=")
     }
